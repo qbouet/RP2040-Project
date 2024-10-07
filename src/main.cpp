@@ -10,6 +10,8 @@
 #include "drivers/LIS3DH/LIS3DH.h"
 #include "drivers/microphone/microphone.h"
 
+#include "programs.h"
+
 #define LED_PIN 14
 #define BUTTON_PIN 15  // GPIO pin for button
 #define CAPTURE_DEPTH 1024 // microphone buffer depth
@@ -74,121 +76,121 @@ int main() {
 
 // Define each program as a function
 
-// Colliding LEDs
-void Colliding_LEDs_program() {
+// // Colliding LEDs
+// void Colliding_LEDs_program() {
 
-    LEDs myLEDs;
+//     LEDs myLEDs;
 
-    // Initialise PIO0 to control the LED chain
-    myLEDs.init();
+//     // Initialise PIO0 to control the LED chain
+//     myLEDs.init();
 
-    // Colliding LEDs
-    while (!end_task){
-        int left = 0;
-        int right = 11;
-        for (int i = 0; i < 6; i++) {
-            // left LEDs
-            myLEDs.set_LED_colour(left, 0 + 5*i, 0, 20 - 3*i);
-            myLEDs.apply_changes();
-            sleep_ms(100 - i*10);
-            myLEDs.turn_all_off();
+//     // Colliding LEDs
+//     while (!end_task){
+//         int left = 0;
+//         int right = 11;
+//         for (int i = 0; i < 6; i++) {
+//             // left LEDs
+//             myLEDs.set_LED_colour(left, 0 + 5*i, 0, 20 - 3*i);
+//             myLEDs.apply_changes();
+//             sleep_ms(100 - i*10);
+//             myLEDs.turn_all_off();
 
-            // right LEDs
-            myLEDs.set_LED_colour(right, 0 + 5*i, 0, 20 - 3*i);
-            myLEDs.apply_changes();
-            sleep_ms(100 - i*10);
-            myLEDs.turn_all_off();
+//             // right LEDs
+//             myLEDs.set_LED_colour(right, 0 + 5*i, 0, 20 - 3*i);
+//             myLEDs.apply_changes();
+//             sleep_ms(100 - i*10);
+//             myLEDs.turn_all_off();
 
-            left++;
-            right--;
-        }
+//             left++;
+//             right--;
+//         }
 
-        for (int i = 0; i < 3; i++) {
-            // left LEDs
-            myLEDs.set_LED_colour(right, 30, 0, 3);
-            myLEDs.apply_changes();
-            sleep_ms(50);
-            myLEDs.turn_all_off();
+//         for (int i = 0; i < 3; i++) {
+//             // left LEDs
+//             myLEDs.set_LED_colour(right, 30, 0, 3);
+//             myLEDs.apply_changes();
+//             sleep_ms(50);
+//             myLEDs.turn_all_off();
 
-            // right LEDs
-            myLEDs.set_LED_colour(left, 30, 0, 3);
-            myLEDs.apply_changes();
-            sleep_ms(50);
-            myLEDs.turn_all_off();
-        }
-    }
+//             // right LEDs
+//             myLEDs.set_LED_colour(left, 30, 0, 3);
+//             myLEDs.apply_changes();
+//             sleep_ms(50);
+//             myLEDs.turn_all_off();
+//         }
+//     }
 
-}
+//}
 
-// Basic accelerometer program
-void Accelerometer_program() {
+// // Basic accelerometer program
+// void Accelerometer_program() {
 
-    stdio_init_all();
+//     stdio_init_all();
 
-    LEDs myLEDs;
-    myLEDs.init();
+//     LEDs myLEDs;
+//     myLEDs.init();
 
-    LIS3DH accel;
-    accel.init();
+//     LIS3DH accel;
+//     accel.init();
 
-    float x_accel;
-    float y_accel;
-    float z_accel;
+//     float x_accel;
+//     float y_accel;
+//     float z_accel;
 
-    while (!end_task) {
+//     while (!end_task) {
 
-        accel.get_xyz_measurements_g(x_accel, y_accel, z_accel);
+//         accel.get_xyz_measurements_g(x_accel, y_accel, z_accel);
 
-        // Print measurements to terminal
-        printf("\nX: %f\n", x_accel);
-        printf("Y: %f\n", y_accel);
-        printf("Z: %f\n", z_accel);
+//         // Print measurements to terminal
+//         printf("\nX: %f\n", x_accel);
+//         printf("Y: %f\n", y_accel);
+//         printf("Z: %f\n", z_accel);
 
-        myLEDs.turn_all_off();
-        if (x_accel < 0){
-            myLEDs.set_LED_colour(4,0,30,0);
-        }
-        if (x_accel > 0){
-            myLEDs.set_LED_colour(7,0,30,0);
-        }
+//         myLEDs.turn_all_off();
+//         if (x_accel < 0){
+//             myLEDs.set_LED_colour(4,0,30,0);
+//         }
+//         if (x_accel > 0){
+//             myLEDs.set_LED_colour(7,0,30,0);
+//         }
 
-        if (y_accel < 0){
-            myLEDs.set_LED_colour(0,30,0,0);
-        }
-        if (y_accel > 0){
-            myLEDs.set_LED_colour(3,30,0,0);
-        }
+//         if (y_accel < 0){
+//             myLEDs.set_LED_colour(0,30,0,0);
+//         }
+//         if (y_accel > 0){
+//             myLEDs.set_LED_colour(3,30,0,0);
+//         }
 
-        if (z_accel < 0){
-            myLEDs.set_LED_colour(8,0,0,30);
-        }
-        if (z_accel > 0){
-            myLEDs.set_LED_colour(11,0,0,30);
-        }
+//         if (z_accel < 0){
+//             myLEDs.set_LED_colour(8,0,0,30);
+//         }
+//         if (z_accel > 0){
+//             myLEDs.set_LED_colour(11,0,0,30);
+//         }
 
-        myLEDs.apply_changes();
-        sleep_ms(100);  // Read data every 100ms
-    }
+//         myLEDs.apply_changes();
+//         sleep_ms(100);  // Read data every 100ms
+//     }
     
-}
+// }
 
-// Snake
-void Snake_program() {
-    stdio_init_all();
-    LEDs myLEDs;
-    myLEDs.init();
-    myLEDs.custom_snake(4, 20, 20, 0);
-}
+// // Snake
+// void Snake_program() {
+//     stdio_init_all();
+//     LEDs myLEDs;
+//     myLEDs.init();
+//     myLEDs.custom_snake(4, 20, 20, 0);
+// }
 
-// Microphone
-void Microphone_program() {
-    stdio_init_all();
-    MICROPHONE microphone;    
+// // Microphone
+// void Microphone_program() {
+//     stdio_init_all();
+//     MICROPHONE microphone;    
 
-    uint16_t buffer[CAPTURE_DEPTH];
+//     uint16_t buffer[CAPTURE_DEPTH];
 
-    microphone.init();
-    microphone.read(buffer, 1024);
+//     microphone.init();
+//     microphone.read(buffer, 1024);
 
 
-}
+// }

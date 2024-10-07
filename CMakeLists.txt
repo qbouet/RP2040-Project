@@ -35,6 +35,10 @@ if(CrossCompiling)
         src/drivers/leds.cpp
         src/drivers/LIS3DH/LIS3DH.cpp
         src/drivers/microphone/microphone.cpp
+        src/programs/Accelerometer_program.cpp
+        src/programs/Colliding_LEDs_program.cpp
+        src/programs/Microphone_program.cpp
+        src/programs/Snake_program.cpp
     )
     target_include_directories(labs
         PUBLIC 
@@ -89,6 +93,10 @@ else()
         tests/mocks/hardware/gpio.cpp
         tests/mocks/hardware/pio.cpp
         tests/mocks/ws2812.cpp
+        src/programs/Accelerometer_program.cpp
+        src/programs/Colliding_LEDs_program.cpp
+        src/programs/Microphone_program.cpp
+        src/programs/Snake_program.cpp
     )
     target_include_directories(labs
         PUBLIC 
