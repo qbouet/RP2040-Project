@@ -48,6 +48,14 @@ void MICROPHONE::read(uint16_t* capture_buf, unsigned int number_of_samples) {
 
     // Drain the FIFO to discard any further samples that were collected by the ADC
     adc_fifo_drain();
+
+    printf("test 1\n");
+
+    // // Print the contents of the buffer
+    // printf("Captured samples:\n");
+    // for (unsigned int i = 0; i < number_of_samples; ++i) {
+    //     printf("Sample %u: %u\n", i, capture_buf[i]);
+    // }
 }
 
 
