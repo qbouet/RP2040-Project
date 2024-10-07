@@ -11,12 +11,28 @@
 
 #define LED_PIN 14
 #define BUTTON_PIN 15  // GPIO pin for button
+#define DEBOUNCE_TIME_MS 100  // Debounce time in milliseconds
 
 volatile int current_task = 3;  // Variable to track the current task
 volatile bool end_task = false;  // Variable to end the current task
 
+// Variable to store the last time the button was pressed
+volatile uint32_t last_press_time = 0;
+
 // Interrupt handler for the button press
 void button_callback(uint gpio, uint32_t events) {
+    // Get the current time in milliseconds
+    uint32_t current_time = to_ms_since_boot(get_absolute_time());
+
+    // Check if the button press is within the debounce time
+    if ((current_time - last_press_time) < DEBOUNCE_TIME_MS) {
+        // Ignore this press as it's within the debounce time
+        return;
+    }
+
+    // Update the last press time
+    last_press_time = current_time;
+
     if (gpio == BUTTON_PIN) {
         end_task = true;
         current_task = (current_task + 1) % 4;  // Toggle between 4 tasks (0, 1, 2, 3)
