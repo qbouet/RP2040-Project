@@ -11,16 +11,9 @@
 
 #define LED_PIN 14
 #define BUTTON_PIN 15  // GPIO pin for button
-#define CAPTURE_DEPTH 1024 // microphone buffer depth
 
 volatile int current_task = 3;  // Variable to track the current task
 volatile bool end_task = false;  // Variable to end the current task
-
-// Programs
-void Colliding_LEDs_program();
-void Accelerometer_program();
-void Snake_program();
-void Microphone_program();
 
 // Interrupt handler for the button press
 void button_callback(uint gpio, uint32_t events) {
