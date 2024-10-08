@@ -60,6 +60,7 @@ if(CrossCompiling)
         src/programs/Colliding_LEDs_program.cpp
         src/programs/Microphone_program.cpp
         src/programs/Snake_program.cpp
+        src/programs/Bluetooth_program.cpp
     )
     target_include_directories(labs
         PUBLIC 
@@ -119,6 +120,7 @@ else()
         src/programs/Colliding_LEDs_program.cpp
         src/programs/Microphone_program.cpp
         src/programs/Snake_program.cpp
+        src/programs/Bluetooth_program.cpp
     )
     target_include_directories(labs
         PUBLIC 

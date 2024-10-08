@@ -7,5 +7,6 @@ void Colliding_LEDs_program();
 void Accelerometer_program();
 void Snake_program();
 void Microphone_program();
+void Bluetooth_program();
 
 #endif
