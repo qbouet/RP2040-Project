@@ -13,7 +13,7 @@
 #define BUTTON_PIN 15  // GPIO pin for button
 #define DEBOUNCE_TIME_MS 100  // Debounce time in milliseconds
 
-volatile int current_task = 4;  // Variable to track the current task
+volatile int current_task = 3;  // Variable to track the current task
 volatile bool end_task = false;  // Variable to end the current task
 
 // Variable to store the last time the button was pressed
