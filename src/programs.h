@@ -8,5 +8,6 @@ void Accelerometer_program();
 void Snake_program();
 void Microphone_program();
 void Bluetooth_program();
+void I2C_scan_program();
 
 #endif
